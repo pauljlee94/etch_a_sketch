@@ -3,13 +3,26 @@
 }
 
 body {
-    background-color: rgb(24, 24, 32)
+    background-color: rgb(35, 39, 44);
+    font-family: 'Roboto', sans-serif;
+}
+
+h1 {
+    margin:30px auto 0 auto;
+    padding: 5px;
+    display: block;
+    text-align: center;
+    width:130px;
+    height: 95px;
+    color: white;
+    border: white 5px solid;
+    box-shadow: 5px 5px rgb(255, 255, 255);
 }
 
 #container {
-    margin: 150px auto 0 auto;
-    width: 600px;
-    height: 600px;
+    margin: 40px auto 0 auto;
+    width: 650px;
+    height: 650px;
     text-align:center;
     font-size: 0;
 }
@@ -29,7 +42,7 @@ body {
 }
 
 .resetButton {
-    margin:50px auto 0 auto;
+    margin:40px auto 0 auto;
     display: block;
     width: 100px;
     height: 30px;

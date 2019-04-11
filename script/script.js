@@ -6,7 +6,7 @@ function makeGrid (x) {
     for (i=0; i<x; i++) {
         for (j=0; j<x; j++) {
             let grid = document.createElement('div');
-            let dimension = 600/x;
+            let dimension = 650/x;
             grid.style.height = dimension + "px";
             grid.style.width = dimension + "px";
             if (i%2==0 && j%2==0 || i%2!=0 && j%2!=0) {
