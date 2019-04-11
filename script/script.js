@@ -1,12 +1,13 @@
 const container = document.querySelector('#container');
 const resetButton = document.querySelector('.resetButton')
 let grid = document.getElementsByClassName('grid')
+let colorPicker = document.querySelector('.colorPicker')
 
 function makeGrid (x) { 
     for (i=0; i<x; i++) {
         for (j=0; j<x; j++) {
             let grid = document.createElement('div');
-            let dimension = 650/x;
+            let dimension = 600/x;
             grid.style.height = dimension + "px";
             grid.style.width = dimension + "px";
             if (i%2==0 && j%2==0 || i%2!=0 && j%2!=0) {
@@ -39,7 +40,8 @@ resetButton.addEventListener('click', function() {
 function gridEventListener () {
     for (let i=0; i<grid.length; i++) {
         grid[i].addEventListener('mouseenter', function() {
-            grid[i].style.backgroundColor = 'black';
+            let color = colorPicker.value
+            grid[i].style.backgroundColor = color;
     })}
 }
 
