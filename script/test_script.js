@@ -2,6 +2,7 @@ const container = document.querySelector('#container');
 const resetButton = document.querySelector('.resetButton')
 let grid = document.getElementsByClassName('grid')
 let colorPicker = document.querySelector('.colorPicker')
+let mouseDown = false
 
 function makeGrid (x) { 
     for (i=0; i<x; i++) {
@@ -34,10 +35,20 @@ function reset() {
 
 resetButton.addEventListener('click', function() {
     reset();
-    draw()
+    gridEventListener()
 })
 
-function draw () {
+container.addEventListener('mousedown', function() {
+    mouseDown = true;
+    eventListen();
+})
+container.addEventListener('mouseup', function() {
+    mouseDown = false;
+    console.log(mouseDown);
+
+})
+
+function eventListen() {
     for (let i=0; i<grid.length; i++) {
         grid[i].addEventListener('mouseenter', function() {
             let color = colorPicker.value
@@ -45,6 +56,29 @@ function draw () {
     })}
 }
 
+   
+
+
+
 //Initialize Game
 reset()
-draw()
+// eventListen()
+
+// function eventListen () {
+//     for (let i=0; i<grid.length; i++) {
+//         grid[i].addEventListener('mousedown', function() {
+//             mouseDown = true;
+//             console.log(mouseDown)
+//         })
+//         grid[i].addEventListener('mouseup', function() {
+//             mouseDown = false;
+//             console.log(mouseDown)
+//         })
+// //         if (mouseDown == true) {
+//             grid[i].addEventListener('mousenter', function() {
+//                 let color = colorPicker.value
+//                 grid[i].style.backgroundColor = color;
+//         })}
+            
+//     }
+// }
