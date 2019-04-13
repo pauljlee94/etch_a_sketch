@@ -1,7 +1,34 @@
+//-----------------------//
+//                       //
+//     Etch-a-Sketch     //
+//                       //
+//       Paul Lee        //
+//                       //
+//-----------------------//
+
 const container = document.querySelector('#container');
 const resetButton = document.querySelector('.resetButton')
-let grid = document.getElementsByClassName('grid')
-let colorPicker = document.querySelector('.colorPicker')
+const grid = document.getElementsByClassName('grid')
+const colorPicker = document.querySelector('.colorPicker')
+let mouseDown = false
+container.addEventListener('mousedown', function(e) {
+    mouseDown = true;
+})
+container.addEventListener('mouseup', function(e) {
+    mouseDown = false;
+})
+
+function initializeGame() {
+    container.innerHTML = "";
+    let x = prompt("size?");
+    if (x > 0) {
+        makeGrid(x);
+    }else {
+        alert("Invalid entry");
+        initializeGame();
+    }
+    draw();
+}
 
 function makeGrid (x) { 
     for (i=0; i<x; i++) {
@@ -21,30 +48,26 @@ function makeGrid (x) {
     }
 }
 
-function reset() {
-    container.innerHTML = ""
-    let x = prompt("size?")
-    if (x > 0) {
-        makeGrid(x)
-    }else {
-        alert("Invalid entry")
-        reset()
+resetButton.addEventListener('click', function() {
+    initializeGame();
+    draw();
+})
+
+function draw() {
+    for (let i=0; i<grid.length; i++) {
+        grid[i].addEventListener('mouseover', function() {
+            if (mouseDown == true) {
+                let color = colorPicker.value;
+                grid[i].style.backgroundColor = color;
+            }
+        })
+    }
+    for (let i=0; i<grid.length; i++) {
+        grid[i].addEventListener('mousedown', function() {
+            let color = colorPicker.value;
+            grid[i].style.backgroundColor = color;
+        })
     }
 }
 
-resetButton.addEventListener('click', function() {
-    reset();
-    draw()
-})
-
-function draw () {
-    for (let i=0; i<grid.length; i++) {
-        grid[i].addEventListener('mouseenter', function() {
-            let color = colorPicker.value
-            grid[i].style.backgroundColor = color;
-    })}
-}
-
-//Initialize Game
-reset()
-draw()
+initializeGame()
